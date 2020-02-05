@@ -12,6 +12,7 @@
         . Creating a web page with some features that can allow users to make a login. (x)
     -- Getting user input.
         . Getting the user input to verify their account.(x)
-    -- Connecting the Server to the PostgreSQL Database.
-        . This will ask for the parameters at the moment when the server is starting.
-        . Making connection.
+    -- Login Event on Socket.
+        . First will be created the even on the socket. (x)
+        . This will call the event on the socket. (x)
+        . It will pass the arguments for the socket. (x)

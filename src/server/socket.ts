@@ -70,7 +70,9 @@ class AppSocket {
      */
     private listen():void {
         this.socket.on('connection', (socket: any) => {
-            socket.emit("news", "hey");
+            socket.on('login', (data: JSON) => {
+                console.log(data)
+            })
         })
     }
 }
