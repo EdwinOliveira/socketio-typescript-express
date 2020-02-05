@@ -48,12 +48,26 @@ class AppSocket {
         this.socket = ioSocket(this.server);
     }
     
+    /** Routes
+     * All the routes for the application will be dropped here, even css and js ones.
+     */
     private routes():void {
         this.app.get('/', (req: express.Request, res: express.Response) => {
             res.sendFile(path.resolve(__dirname,'..' + '/client/html/index.html'));
         });
+
+        this.app.get('/css/index.css',(req: express.Request, res: express.Response) => {
+            res.sendFile(path.resolve(__dirname,'..' + '/client/css/index.css'));
+        });
+
+        this.app.get('/js/index.js',(req: express.Request, res: express.Response) => {
+            res.sendFile(path.resolve(__dirname,'..' + '/client/js/index.js'));
+        });
     }
 
+    /** Listen
+     * It will always be listening for client connects and requests from the clients on the socket functions.
+     */
     private listen():void {
         this.socket.on('connection', (socket: any) => {
             socket.emit("news", "hey");
