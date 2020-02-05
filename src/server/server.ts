@@ -2,8 +2,7 @@
  * AppSocket, will import the socket and routes.
  * http, to run the server.
  */
-import AppSocket from '../server/socket';
-import {Server} from 'http';
+import AppSocket from './socket';
 
 class AppServer {
     private port: String|Number = process.env.PORT || AppSocket.port;

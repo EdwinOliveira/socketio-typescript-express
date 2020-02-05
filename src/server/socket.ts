@@ -56,7 +56,7 @@ class AppSocket {
 
     private listen():void {
         this.socket.on('connection', (socket: any) => {
-            console.log('Hey');
+            socket.emit("news", "hey");
         })
     }
 }

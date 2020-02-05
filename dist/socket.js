@@ -51,12 +51,12 @@ class AppSocket {
     }
     routes() {
         this.app.get('/', (req, res) => {
-            res.sendFile(path_1.default.resolve(__dirname, '..', '/client/html/index.html'));
+            res.sendFile(path_1.default.resolve(__dirname, '..' + '/src/client/html/index.html'));
         });
     }
     listen() {
         this.socket.on('connection', (socket) => {
-            console.log('Hey');
+            socket.emit("news", "hey");
         });
     }
 }

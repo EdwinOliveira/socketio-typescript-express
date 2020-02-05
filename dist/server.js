@@ -7,7 +7,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
  * AppSocket, will import the socket and routes.
  * http, to run the server.
  */
-const socket_1 = __importDefault(require("../server/socket"));
+const socket_1 = __importDefault(require("./socket"));
 class AppServer {
     constructor() {
         this.port = process.env.PORT || socket_1.default.port;
