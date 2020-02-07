@@ -16,3 +16,8 @@
         . First will be created the even on the socket. (x)
         . This will call the event on the socket. (x)
         . It will pass the arguments for the socket. (x)
+
+# 06/02/2020
+    -- Database Setup:
+        . Creation of the database, objects and class to handle everything related to the setup. (x)
+        . Connecting to the already created database in PostgreSQL; (x)

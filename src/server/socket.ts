@@ -7,6 +7,8 @@ import express from 'express';
 import * as http from 'http';
 import ioSocket = require('socket.io');
 import path from 'path';
+import {AppDatabase} from './db'
+
 
 /** Class Server
  * It will create the server.
@@ -69,9 +71,13 @@ class AppSocket {
      * It will always be listening for client connects and requests from the clients on the socket functions.
      */
     private listen():void {
+        const appDb: AppDatabase = new AppDatabase();
+
         this.socket.on('connection', (socket: any) => {
             socket.on('login', (data: JSON) => {
-                console.log(data)
+                appDb.clientVar.query(`Select verify_user_id(${data})`, (err: any, res: any) => {
+                    console.log(`Select verify_user_id(${data})`);
+                });
             })
         })
     }
