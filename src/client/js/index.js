@@ -1,7 +1,8 @@
 class UI {
     static verifyLogin(loginObj) {
         let socket = io.connect('http://localhost:5000');
-        socket.emit('login', { loginObj });
+        console.log(loginObj);
+        socket.emit('login', loginObj);
     }
 }
 
@@ -13,8 +14,11 @@ document.querySelector('#login-form').addEventListener('submit', (e) => {
     let password = document.querySelector('#exampleInputPassword1').value;
     
     //Creating the object
-    const loginObj = {email: email,password: password};
+    const loginObj = {
+        "email": email,
+        "password": password
+    };
 
     //Calling the function to verify the account.
-    UI.verifyLogin(loginObj);
+    UI.verifyLogin(JSON.stringify(loginObj));
 });

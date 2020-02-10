@@ -23,6 +23,14 @@ class AppDatabase {
         this.clientVar.connect();
     }
 
+    public async checkLogin(data: JSON):Promise<number> {
+        // Verifies if the user is on the database
+        const resultRows = await this.clientVar.query(`select check_user('${data}')`);
+        const valueToReturn: number = resultRows.rows[0].check_user;
+
+        return valueToReturn;
+    }
+
 }
 
 export {AppDatabase};

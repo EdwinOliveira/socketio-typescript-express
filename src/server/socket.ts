@@ -7,8 +7,12 @@ import express from 'express';
 import * as http from 'http';
 import ioSocket = require('socket.io');
 import path from 'path';
-import {AppDatabase} from './db'
+import * as AppDatabase from './db'
 
+interface MyObj {
+    email: string;
+    password: string;
+}
 
 /** Class Server
  * It will create the server.
@@ -71,13 +75,18 @@ class AppSocket {
      * It will always be listening for client connects and requests from the clients on the socket functions.
      */
     private listen():void {
-        const appDb: AppDatabase = new AppDatabase();
+        //Create database instance
+        const dbReference: AppDatabase.AppDatabase = new AppDatabase.AppDatabase();
 
         this.socket.on('connection', (socket: any) => {
-            socket.on('login', (data: JSON) => {
-                appDb.clientVar.query(`Select verify_user_id(${data})`, (err: any, res: any) => {
-                    console.log(`Select verify_user_id(${data})`);
-                });
+            socket.on('login', async (data: JSON) => {
+                let logReturnValue: Promise<number> = dbReference.checkLogin(data);
+                console.log(logReturnValue)
+                if(await logReturnValue == 1) {
+                    console.log('Hey, its working')
+                } else {
+                    console.log('Yeah, you are not valid my dude.')
+                }
             })
         })
     }
