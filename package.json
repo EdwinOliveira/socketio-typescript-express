@@ -24,7 +24,7 @@
     "express": "^4.17.1",
     "pg": "^7.18.1",
     "pg-promise": "^10.4.2",
-    "socket.io": "^2.3.0",
+    "socket.io": "^2.4.0",
     "socket.io-client": "^2.3.0"
   },
   "devDependencies": {
